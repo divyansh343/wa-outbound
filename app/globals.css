@@ -3,25 +3,107 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f9fafb;
+  --foreground: #111111;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Custom Squarespace minimalist styles & overrides */
+.text-white {
+  color: var(--foreground) !important;
 }
+
+/* Maintain crisp white text for dark/accent backgrounds (buttons, active status pills, chat bubbles, etc.) and their descendants */
+.bg-indigo-600.text-white,
+.bg-indigo-600.text-white *,
+.bg-indigo-600,
+.bg-indigo-600 *,
+.bg-indigo-700.text-white,
+.bg-indigo-700.text-white *,
+.bg-indigo-700,
+.bg-indigo-700 *,
+.bg-indigo-500.text-white,
+.bg-indigo-500.text-white *,
+.bg-indigo-500,
+.bg-indigo-500 *,
+.bg-violet-600.text-white,
+.bg-violet-600.text-white *,
+.bg-violet-700.text-white,
+.bg-violet-700.text-white *,
+.bg-violet-500.text-white,
+.bg-violet-500.text-white *,
+.bg-rose-600.text-white,
+.bg-rose-600.text-white *,
+.bg-rose-500.text-white,
+.bg-rose-500.text-white *,
+.bg-emerald-600.text-white,
+.bg-emerald-600.text-white *,
+.bg-emerald-500.text-white,
+.bg-emerald-500.text-white *,
+.bg-indigo-600 .text-white,
+.bg-indigo-700 .text-white,
+.bg-rose-600 .text-white,
+.bg-rose-500 .text-white,
+.bg-green-600.text-white,
+.bg-green-600 .text-white,
+.bg-red-600.text-white,
+.bg-red-600 .text-white,
+[class*="bg-emerald-500/10"].text-emerald-400,
+.bg-indigo-500 .text-white,
+.bg-indigo-500 .text-white * {
+  color: #ffffff !important;
+}
+
+/* Maintain soft/muted white text for metadata inside dark backgrounds */
+.bg-indigo-600 [class*="text-slate-400/80"],
+.bg-indigo-600 .text-slate-400,
+.bg-indigo-600 .text-slate-500,
+.bg-indigo-600 .text-slate-600,
+.bg-indigo-700 [class*="text-slate-400/80"],
+.bg-indigo-700 .text-slate-400,
+.bg-indigo-700 .text-slate-500,
+.bg-indigo-700 .text-slate-600,
+.bg-indigo-500 [class*="text-slate-400/80"],
+.bg-indigo-500 .text-slate-400,
+.bg-indigo-500 .text-slate-500,
+.bg-indigo-500 .text-slate-600 {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Make sure active states in sidebar/buttons look solid black and extremely clean */
+[class*="shadow-indigo-600/"] {
+  box-shadow: none !important;
+}
+
+/* Subtle, clean styling for standard input fields and focus states */
+input, select, textarea {
+  border-radius: 4px !important;
+  transition: all 0.15s ease-in-out;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #000000 !important;
+  box-shadow: 0 0 0 1px #000000 !important;
+}
+
+/* Modern, flat scrollbars suited for a minimalist Squarespace UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+

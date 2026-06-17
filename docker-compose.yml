@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - '3001:3000'
+    environment:
+      - DATABASE_URL=postgresql://neondb_owner:npg_egox6ICBUc1F@ep-calm-union-ao5z58ec-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=verify-full&channel_binding=require
+      - REDIS_URL=redis://redis:6379
+      - NEXTAUTH_URL=http://localhost:3001
+      - NEXTAUTH_SECRET=a_very_long_random_string_for_nextauth_secret_123456
+      - NEXT_PUBLIC_WS_URL=http://localhost:3001
+      - NODE_ENV=production
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
